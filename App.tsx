@@ -1,12 +1,8 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import Home from './src/pages/Home/Home';
 
 function App(): JSX.Element {
-  return (
-    <SafeAreaView>
-      <Text>Init</Text>
-    </SafeAreaView>
-  );
+  return <Home />;
 }
 
 export default App;
