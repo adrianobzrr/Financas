@@ -5,7 +5,7 @@ interface HeaderProps {
   name: string;
 }
 
-function Header({name}: HeaderProps) {
+const Header = ({name}: HeaderProps) => {
   return (
     <S.Container>
       <S.Content>
@@ -16,6 +16,6 @@ function Header({name}: HeaderProps) {
       </S.Content>
     </S.Container>
   );
-}
+};
 
 export default Header;

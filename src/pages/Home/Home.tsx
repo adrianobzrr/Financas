@@ -1,12 +1,14 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import * as S from './Home.styles';
 import Header from '../../components/Header/Header';
+import Balance from '../../components/Balance/Balance';
 
 function Home(): JSX.Element {
   return (
-    <SafeAreaView>
+    <S.Container>
       <Header name="Adriano Pessoa" />
-    </SafeAreaView>
+      <Balance saldo="9.250,90" gastos="-527,00" />
+    </S.Container>
   );
 }
 
