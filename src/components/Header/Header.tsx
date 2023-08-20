@@ -1,9 +1,6 @@
 import React from 'react';
 import * as S from './Header.styles';
-
-interface HeaderProps {
-  name: string;
-}
+import HeaderProps from './Header.types';
 
 const Header = ({name}: HeaderProps) => {
   return (

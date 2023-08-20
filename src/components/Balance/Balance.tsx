@@ -1,10 +1,6 @@
 import React from 'react';
 import * as S from './Balance.styles';
-
-interface BalanceProps {
-  saldo: string;
-  gastos: string;
-}
+import BalanceProps from './Balance.types';
 
 const Balance = ({saldo, gastos}: BalanceProps) => {
   return (
