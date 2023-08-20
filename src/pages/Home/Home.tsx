@@ -2,6 +2,7 @@ import React from 'react';
 import * as S from './Home.styles';
 import Header from '../../components/Header/Header';
 import Balance from '../../components/Balance/Balance';
+import Movements from '../../components/Movements/Movements';
 
 const list = [
   {
@@ -33,6 +34,12 @@ function Home(): JSX.Element {
       <Header name="Adriano Pessoa" />
       <Balance saldo="9.250,90" gastos="-527,00" />
       <S.TitleLastMoviments>Últimas movimentações</S.TitleLastMoviments>
+      <S.ListMoviments
+        data={list}
+        keyExtractor={item => String(item.id)}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({item}) => <Movements data={item} />}
+      />
     </S.Container>
   );
 }
