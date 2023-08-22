@@ -3,6 +3,7 @@ import * as S from './Home.styles';
 import Header from '../../components/Header/Header';
 import Balance from '../../components/Balance/Balance';
 import Movements from '../../components/Movements/Movements';
+import Actions from '../../components/Actions/Actions';
 
 const list = [
   {
@@ -33,6 +34,7 @@ function Home(): JSX.Element {
     <S.Container>
       <Header name="Adriano Pessoa" />
       <Balance saldo="9.250,90" gastos="-527,00" />
+      <Actions />
       <S.TitleLastMoviments>Últimas movimentações</S.TitleLastMoviments>
       <S.ListMoviments
         data={list}

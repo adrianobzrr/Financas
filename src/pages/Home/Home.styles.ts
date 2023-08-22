@@ -11,6 +11,7 @@ export const TitleLastMoviments = styled.Text`
   margin-right: 14;
   margin-top: 14;
   color: #000;
+  margin-bottom: 14;
 `;
 
 export const ListMoviments = styled.FlatList`

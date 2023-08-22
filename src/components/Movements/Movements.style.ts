@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.View`
   flex: 1;
   margin-bottom: 24;
   border-bottom-width: 0.5;
