@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export const Scroll = styled.ScrollView`
   max-height: 84;
@@ -14,7 +14,7 @@ export const ActionButton = styled.TouchableOpacity`
   margin-right: 32;
 `;
 
-export const Icon = styled(AntDesign)`
+export const Icon = styled(MaterialCommunityIcons)`
   color: #000;
 `;
 

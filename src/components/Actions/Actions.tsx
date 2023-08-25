@@ -6,17 +6,17 @@ const Actions = () => {
     <S.Scroll horizontal={true} showsHorizontalScrollIndicator={false}>
       <S.ActionButton>
         <S.AreaButton>
-          <S.Icon name="addfolder" size={26} />
+          <S.Icon name="cash-plus" size={26} />
         </S.AreaButton>
         <S.ButtonLabel>Entradas</S.ButtonLabel>
       </S.ActionButton>
       <S.ActionButton>
         <S.AreaButton>
-          <S.Icon name="tagso" size={26} />
+          <S.Icon name="cash-minus" size={26} />
         </S.AreaButton>
-        <S.ButtonLabel>Compras</S.ButtonLabel>
+        <S.ButtonLabel>Saidas</S.ButtonLabel>
       </S.ActionButton>
-      <S.ActionButton>
+      {/* <S.ActionButton>
         <S.AreaButton>
           <S.Icon name="creditcard" size={26} />
         </S.AreaButton>
@@ -26,14 +26,14 @@ const Actions = () => {
         <S.AreaButton>
           <S.Icon name="barcode" size={26} />
         </S.AreaButton>
-        <S.ButtonLabel>Coletos</S.ButtonLabel>
+        <S.ButtonLabel>Boletos</S.ButtonLabel>
       </S.ActionButton>
       <S.ActionButton>
         <S.AreaButton>
           <S.Icon name="setting" size={26} />
         </S.AreaButton>
         <S.ButtonLabel>Conta</S.ButtonLabel>
-      </S.ActionButton>
+      </S.ActionButton> */}
     </S.Scroll>
   );
 };

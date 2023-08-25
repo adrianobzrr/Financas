@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import * as S from './Home.styles';
 import Header from '../../components/Header/Header';
 import Balance from '../../components/Balance/Balance';
 import Movements from '../../components/Movements/Movements';
 import Actions from '../../components/Actions/Actions';
+import DataResolver from '../../Utils/Storage';
 
 const list = [
   {
@@ -20,16 +21,31 @@ const list = [
     date: '14/09/2023',
     type: 1,
   },
-  {
-    id: 3,
-    label: 'Salário',
-    value: '7.200,00',
-    date: '5/09/2023',
-    type: 1,
-  },
+  // {
+  //   id: 3,
+  //   label: 'Salário',
+  //   value: '7.200,00',
+  //   date: '5/09/2023',
+  //   type: 1,
+  // },
 ];
 
-function Home(): JSX.Element {
+const Home = () => {
+  const [movementsList, setMovementsList] = useState(list)
+
+  useEffect(() => {
+    DataResolver.storeData('listaDados', movementsList);
+  }, [movementsList]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const storedList = await DataResolver.getData('listaDados');
+      console.log(storedList);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <S.Container>
       <Header name="Adriano Pessoa" />
@@ -37,13 +53,13 @@ function Home(): JSX.Element {
       <Actions />
       <S.TitleLastMoviments>Últimas movimentações</S.TitleLastMoviments>
       <S.ListMoviments
-        data={list}
+        data={movementsList}
         keyExtractor={item => String(item.id)}
         showsHorizontalScrollIndicator={false}
         renderItem={({item}) => <Movements data={item} />}
       />
     </S.Container>
   );
-}
+};
 
 export default Home;
