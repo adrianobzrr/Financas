@@ -8,13 +8,13 @@ const Actions = () => {
         <S.AreaButton>
           <S.Icon name="cash-plus" size={26} />
         </S.AreaButton>
-        <S.ButtonLabel>Entradas</S.ButtonLabel>
+        <S.ButtonLabel>Entrada</S.ButtonLabel>
       </S.ActionButton>
       <S.ActionButton>
         <S.AreaButton>
           <S.Icon name="cash-minus" size={26} />
         </S.AreaButton>
-        <S.ButtonLabel>Saidas</S.ButtonLabel>
+        <S.ButtonLabel>Saida</S.ButtonLabel>
       </S.ActionButton>
       {/* <S.ActionButton>
         <S.AreaButton>

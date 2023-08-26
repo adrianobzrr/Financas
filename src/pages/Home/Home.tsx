@@ -3,8 +3,9 @@ import * as S from './Home.styles';
 import Header from '../../components/Header/Header';
 import Balance from '../../components/Balance/Balance';
 import Movements from '../../components/Movements/Movements';
-import Actions from '../../components/Actions/Actions';
+import AddMovemesnts from '../../components/AddMovements/AddMovements';
 import DataResolver from '../../Utils/Storage';
+import Modal from '../../components/Modal/Modal';
 
 const list = [
   {
@@ -31,7 +32,16 @@ const list = [
 ];
 
 const Home = () => {
-  const [movementsList, setMovementsList] = useState(list)
+  const [movementsList, setMovementsList] = useState(list);
+  const [openModal, setOpenModal] = useState(false);
+
+  const enableOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const desableModal = () => {
+    setOpenModal(false);
+  };
 
   useEffect(() => {
     DataResolver.storeData('listaDados', movementsList);
@@ -50,7 +60,8 @@ const Home = () => {
     <S.Container>
       <Header name="Adriano Pessoa" />
       <Balance saldo="9.250,90" gastos="-527,00" />
-      <Actions />
+      {/* <Actions /> */}
+      <Modal openModal={openModal} desableModal={desableModal} />
       <S.TitleLastMoviments>Últimas movimentações</S.TitleLastMoviments>
       <S.ListMoviments
         data={movementsList}
@@ -58,6 +69,7 @@ const Home = () => {
         showsHorizontalScrollIndicator={false}
         renderItem={({item}) => <Movements data={item} />}
       />
+      <AddMovemesnts enableOpenModal={enableOpenModal} />
     </S.Container>
   );
 };
