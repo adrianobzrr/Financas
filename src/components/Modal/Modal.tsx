@@ -1,16 +1,26 @@
 import React, {useState} from 'react';
 import * as S from './Modal.styles';
 import ModalProps from './Modal.types';
+import HomePros from '../../pages/Home/Home.types';
 
-const Modal = ({openModal, desableModal}: ModalProps) => {
+const Modal = ({
+  openModal,
+  desableModal,
+  handleInsertMovements,
+}: ModalProps) => {
   const [desciption, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [value, setValue] = useState('');
 
   const handleSubmit = () => {
-    console.log(desciption);
-    console.log(date);
-    console.log(value);
+    const data = {
+      id: 5,
+      label: desciption,
+      value: value,
+      date: date,
+      type: 1,
+    };
+    handleInsertMovements(data);
     desableModal();
     clearInputs();
   };
@@ -19,6 +29,11 @@ const Modal = ({openModal, desableModal}: ModalProps) => {
     setDescription('');
     setDate('');
     setValue('');
+  };
+
+  const handleDate = date => {
+    const formattedString = date.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+    setDate(formattedString);
   };
 
   return (
@@ -45,8 +60,9 @@ const Modal = ({openModal, desableModal}: ModalProps) => {
           <S.Input
             placeholder="Data"
             placeholderTextColor="#747474"
+            keyboardType="numeric"
             value={date}
-            onChangeText={date => setDate(date)}
+            onChangeText={date => handleDate(date)}
           />
           <S.Input
             placeholder="Valor"

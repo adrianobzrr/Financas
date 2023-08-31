@@ -10,11 +10,11 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   background-color: #8000ff;
-  padding-top: 50;
+  padding-top: 50px;
   flex-direction: row;
-  padding-left: 6;
-  padding-right: 16;
-  padding-bottom: 50;
+  padding-left: 6px;
+  padding-right: 16px;
+  padding-bottom: 50px;
 `;
 
 export const ActionButton = styled.TouchableOpacity`
@@ -28,25 +28,25 @@ export const Icon = styled(MaterialCommunityIcons)`
 `;
 
 export const Title = styled.Text`
-  font-size: 20;
+  font-size: 20px;
   color: #fff;
   font-weight: bold;
 `;
 
 export const Input = styled.TextInput`
-  font-size: 12;
+  font-size: 12px;
 `;
 
 export const Content = styled.View`
   background-color: #fff;
-  padding-left: 18;
-  padding-right: 18;
-  margin-top: 18;
-  margin-left: 22;
-  margin-right: 22;
+  padding-left: 18px;
+  padding-right: 18px;
+  margin-top: 18px;
+  margin-left: 22px;
+  margin-right: 22px;
   border-radius: 4px;
-  padding-top: 22;
-  padding-bottom: 22;
+  padding-top: 22px;
+  padding-bottom: 22px;
   z-index: 99;
 `;
 

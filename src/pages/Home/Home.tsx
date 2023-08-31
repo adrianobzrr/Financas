@@ -6,6 +6,7 @@ import Movements from '../../components/Movements/Movements';
 import AddMovemesnts from '../../components/AddMovements/AddMovements';
 import DataResolver from '../../Utils/Storage';
 import Modal from '../../components/Modal/Modal';
+import HomePros from './Home.types';
 
 const list = [
   {
@@ -43,6 +44,15 @@ const Home = () => {
     setOpenModal(false);
   };
 
+  const handleInsertMovements = (data) => {
+    console.log('data', data);
+    if (data) {
+      setMovementsList(prevMovementsList => [...prevMovementsList, data]);
+    }
+    console.log('aquiiiii', movementsList);
+    console.log(movementsList.length);
+  };
+
   useEffect(() => {
     DataResolver.storeData('listaDados', movementsList);
   }, [movementsList]);
@@ -61,11 +71,15 @@ const Home = () => {
       <Header name="Adriano Pessoa" />
       <Balance saldo="9.250,90" gastos="-527,00" />
       {/* <Actions /> */}
-      <Modal openModal={openModal} desableModal={desableModal} />
+      <Modal
+        openModal={openModal}
+        desableModal={desableModal}
+        handleInsertMovements={handleInsertMovements}
+      />
       <S.TitleLastMoviments>Últimas movimentações</S.TitleLastMoviments>
       <S.ListMoviments
         data={movementsList}
-        keyExtractor={item => String(item.id)}
+        keyExtractor={item => String(item.label)}
         showsHorizontalScrollIndicator={false}
         renderItem={({item}) => <Movements data={item} />}
       />
