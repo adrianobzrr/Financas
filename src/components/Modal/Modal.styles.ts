@@ -62,6 +62,6 @@ export const SubmitButton = styled.TouchableOpacity`
 `;
 
 export const TextButton = styled.Text`
-  font-size: 14;
+  font-size: 14px;
   color: #fff;
 `;

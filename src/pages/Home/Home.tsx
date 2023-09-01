@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import * as S from './Home.styles';
 import Header from '../../components/Header/Header';
 import Balance from '../../components/Balance/Balance';
@@ -6,34 +6,9 @@ import Movements from '../../components/Movements/Movements';
 import AddMovemesnts from '../../components/AddMovements/AddMovements';
 import DataResolver from '../../Utils/Storage';
 import Modal from '../../components/Modal/Modal';
-import HomePros from './Home.types';
-
-const list = [
-  {
-    id: 1,
-    label: 'Boleto conta luz',
-    value: '256,35',
-    date: '17/09/2023',
-    type: 0,
-  },
-  {
-    id: 2,
-    label: 'Pix client x',
-    value: '2.500,00',
-    date: '14/09/2023',
-    type: 1,
-  },
-  // {
-  //   id: 3,
-  //   label: 'Salário',
-  //   value: '7.200,00',
-  //   date: '5/09/2023',
-  //   type: 1,
-  // },
-];
 
 const Home = () => {
-  const [movementsList, setMovementsList] = useState(list);
+  const [movementsList, setMovementsList] = useState([{}]);
   const [openModal, setOpenModal] = useState(false);
 
   const enableOpenModal = () => {
@@ -44,27 +19,30 @@ const Home = () => {
     setOpenModal(false);
   };
 
-  const handleInsertMovements = (data) => {
-    console.log('data', data);
+  const handleInsertMovements = useCallback((data) => {
     if (data) {
-      setMovementsList(prevMovementsList => [...prevMovementsList, data]);
+      setMovementsList([...movementsList, data]);
     }
-    console.log('aquiiiii', movementsList);
-    console.log(movementsList.length);
-  };
-
-  useEffect(() => {
-    DataResolver.storeData('listaDados', movementsList);
-  }, [movementsList]);
+  });
 
   useEffect(() => {
     const fetchData = async () => {
-      const storedList = await DataResolver.getData('listaDados');
+      const storedList = await DataResolver.getData('@listaDados');
       console.log(storedList);
+      setMovementsList(storedList);
     };
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    DataResolver.storeData('@listaDados', movementsList);
+  }, [movementsList]);
+
+  const handleDelet = useCallback((data) => {
+    const find = movementsList.filter(r => r.label !== data.label);
+    setMovementsList(find);
+  });
 
   return (
     <S.Container>
@@ -81,7 +59,9 @@ const Home = () => {
         data={movementsList}
         keyExtractor={item => String(item.label)}
         showsHorizontalScrollIndicator={false}
-        renderItem={({item}) => <Movements data={item} />}
+        renderItem={({item}) => (
+          <Movements data={item} handleDelet={handleDelet} />
+        )}
       />
       <AddMovemesnts enableOpenModal={enableOpenModal} />
     </S.Container>

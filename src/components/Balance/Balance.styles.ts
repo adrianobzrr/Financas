@@ -4,21 +4,21 @@ export const Container = styled.View`
   background-color: #fff;
   flex-direction: row;
   justify-content: space-between;
-  padding-left: 18;
-  padding-right: 18;
-  margin-top: -24;
-  margin-left: 14;
-  margin-right: 14;
+  padding-left: 18px;
+  padding-right: 18px;
+  margin-top: -24px;
+  margin-left: 14px;
+  margin-right: 14px;
   border-radius: 4px;
-  padding-top: 22;
-  padding-bottom: 22;
+  padding-top: 22px;
+  padding-bottom: 22px;
   z-index: 99;
 `;
 
 export const Item = styled.View``;
 
 export const ItemTitle = styled.Text`
-  font-size: 20;
+  font-size: 20px;
   color: #dadada;
 `;
 
@@ -29,15 +29,15 @@ export const Content = styled.View`
 
 export const CurrencySymbol = styled.Text`
   color: #dadada;
-  margin-right: 6;
+  margin-right: 6px;
 `;
 
 export const Balance = styled.Text`
-  font-size: 22;
+  font-size: 22px;
   color: #2ecc61;
 `;
 
 export const Expenses = styled.Text`
-  font-size: 22;
+  font-size: 22px;
   color: #e74c3c;
 `;

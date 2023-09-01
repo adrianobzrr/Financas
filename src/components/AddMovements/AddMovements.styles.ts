@@ -20,8 +20,8 @@ export const Icon = styled(MaterialCommunityIcons)`
 
 export const AreaButton = styled.View`
   background-color: #8000ff;
-  height: 60;
-  width: 60;
+  height: 60px;
+  width: 60px;
   border-radius: 30px;
   justify-content: center;
   align-items: center;

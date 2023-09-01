@@ -6,6 +6,7 @@ interface MovementsProps {
     date: String;
     type: number;
   };
+  handleDelet: () => void;
 }
 
 export default MovementsProps;

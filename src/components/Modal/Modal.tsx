@@ -61,12 +61,14 @@ const Modal = ({
             placeholder="Data"
             placeholderTextColor="#747474"
             keyboardType="numeric"
+            maxLength={10}
             value={date}
             onChangeText={date => handleDate(date)}
           />
           <S.Input
             placeholder="Valor"
             placeholderTextColor="#747474"
+            keyboardType="numeric"
             value={value}
             onChangeText={value => setValue(value)}
           />
