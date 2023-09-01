@@ -14,7 +14,7 @@ const Modal = ({
 
   const handleSubmit = () => {
     const data = {
-      id: 5,
+      id: Date.now().toString(),
       label: desciption,
       value: value,
       date: date,

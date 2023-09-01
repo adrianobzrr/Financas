@@ -1,8 +1,7 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import * as S from './Home.styles';
 import Header from '../../components/Header/Header';
 import Balance from '../../components/Balance/Balance';
-import Movements from '../../components/Movements/Movements';
 import AddMovemesnts from '../../components/AddMovements/AddMovements';
 import DataResolver from '../../Utils/Storage';
 import Modal from '../../components/Modal/Modal';
@@ -10,20 +9,6 @@ import Modal from '../../components/Modal/Modal';
 const Home = () => {
   const [movementsList, setMovementsList] = useState([{}]);
   const [openModal, setOpenModal] = useState(false);
-
-  const enableOpenModal = () => {
-    setOpenModal(true);
-  };
-
-  const desableModal = () => {
-    setOpenModal(false);
-  };
-
-  const handleInsertMovements = useCallback((data) => {
-    if (data) {
-      setMovementsList([...movementsList, data]);
-    }
-  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,10 +24,24 @@ const Home = () => {
     DataResolver.storeData('@listaDados', movementsList);
   }, [movementsList]);
 
-  const handleDelet = useCallback((data) => {
+  const handleInsertMovements = (data) => {
+    if (data) {
+      setMovementsList([...movementsList, data]);
+    }
+  };
+
+  const handleDelet = (data) => {
     const find = movementsList.filter(r => r.label !== data.label);
     setMovementsList(find);
-  });
+  };
+
+  const enableOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const desableModal = () => {
+    setOpenModal(false);
+  };
 
   return (
     <S.Container>
@@ -57,10 +56,28 @@ const Home = () => {
       <S.TitleLastMoviments>Últimas movimentações</S.TitleLastMoviments>
       <S.ListMoviments
         data={movementsList}
-        keyExtractor={item => String(item.label)}
+        keyExtractor={item => String(item.id)}
         showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         renderItem={({item}) => (
-          <Movements data={item} handleDelet={handleDelet} />
+          <S.Movements>
+            <S.Content>
+              <S.TextDate>{item.date}</S.TextDate>
+              <S.touchableDelete
+                activeOpacity={0.8}
+                onPress={() => handleDelet(item)}>
+                <S.Icon name="trash-alt" size={20} />
+              </S.touchableDelete>
+            </S.Content>
+            <S.Content>
+              <S.TextLabel>{item.label}</S.TextLabel>
+              {item.type === 0 ? (
+                <S.TextExpenses>R$ -{item.value}</S.TextExpenses>
+              ) : (
+                <S.TextValue>R$ {item.value}</S.TextValue>
+              )}
+            </S.Content>
+          </S.Movements>
         )}
       />
       <AddMovemesnts enableOpenModal={enableOpenModal} />

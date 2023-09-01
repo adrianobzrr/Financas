@@ -5,6 +5,8 @@ export const Container = styled.View`
   flex: 1;
   align-items: flex-end;
   justify-content: flex-end;
+  margin-right: 20px;
+  margin-bottom: 20px;
 `;
 
 export const ActionButton = styled.TouchableOpacity`
@@ -12,6 +14,7 @@ export const ActionButton = styled.TouchableOpacity`
   border-radius: 30px;
   margin-right: 20px;
   margin-bottom: 20px;
+  position: absolute;
 `;
 
 export const Icon = styled(MaterialCommunityIcons)`

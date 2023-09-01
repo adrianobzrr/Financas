@@ -1,6 +1,6 @@
 interface HomePros {
   data: {
-    id: number;
+    id: String;
     label: String;
     value: String;
     date: String;
