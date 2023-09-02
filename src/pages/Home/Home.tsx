@@ -5,9 +5,10 @@ import Balance from '../../components/Balance/Balance';
 import AddMovemesnts from '../../components/AddMovements/AddMovements';
 import DataResolver from '../../Utils/Storage';
 import Modal from '../../components/Modal/Modal';
+import HomePros from './Home.types';
 
 const Home = () => {
-  const [movementsList, setMovementsList] = useState([{}]);
+  const [movementsList, setMovementsList] = useState<HomePros[]>();
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
@@ -24,14 +25,14 @@ const Home = () => {
     DataResolver.storeData('@listaDados', movementsList);
   }, [movementsList]);
 
-  const handleInsertMovements = (data) => {
-    if (data) {
+  const handleInsertMovements = (data: HomePros) => {
+    if (movementsList) {
       setMovementsList([...movementsList, data]);
     }
   };
 
-  const handleDelet = (data) => {
-    const find = movementsList.filter(r => r.label !== data.label);
+  const handleDelet = (data: HomePros) => {
+    const find = movementsList?.filter(r => r.id !== data.id);
     setMovementsList(find);
   };
 

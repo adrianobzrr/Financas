@@ -1,3 +1,4 @@
+import HomePros from '../../pages/Home/Home.types';
 interface ModalProps {
   openModal: boolean;
   date: String;
@@ -9,7 +10,7 @@ interface ModalProps {
     type: number;
   };
   desableModal: () => void;
-  handleInsertMovements: () => void;
+  handleInsertMovements: (data: HomePros) => void;
 }
 
 export default ModalProps;

@@ -13,7 +13,7 @@ const Modal = ({
   const [value, setValue] = useState('');
 
   const handleSubmit = () => {
-    const data = {
+    const data: HomePros = {
       id: Date.now().toString(),
       label: desciption,
       value: value,
@@ -31,7 +31,7 @@ const Modal = ({
     setValue('');
   };
 
-  const handleDate = date => {
+  const handleDate = (date: string) => {
     const formattedString = date.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
     setDate(formattedString);
   };
