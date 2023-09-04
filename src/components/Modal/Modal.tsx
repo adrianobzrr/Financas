@@ -12,13 +12,17 @@ const Modal = ({
   const [date, setDate] = useState('');
   const [value, setValue] = useState('');
 
+  const formateValueToNumber = (value: String) => {
+    return parseFloat(value.replace(',', '.'));
+  };
+
   const handleSubmit = () => {
     const data: HomePros = {
       id: Date.now().toString(),
       label: desciption,
-      value: value,
+      value: formateValueToNumber(value),
       date: date,
-      type: 1,
+      type: 0,
     };
     handleInsertMovements(data);
     desableModal();
@@ -32,8 +36,8 @@ const Modal = ({
   };
 
   const handleDate = (date: string) => {
-    const formattedString = date.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
-    setDate(formattedString);
+    const formattedDate = date.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+    setDate(formattedDate);
   };
 
   return (

@@ -42,7 +42,7 @@ export const TextLabel = styled.Text`
   color: #000;
 `;
 
-export const TextValue = styled.Text`
+export const TextAppetizer = styled.Text`
   font-size: 16px;
   color: #2ecc71;
   font-weight: bold;

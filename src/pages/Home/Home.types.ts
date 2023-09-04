@@ -1,7 +1,7 @@
 interface HomePros {
   id: String;
   label: String;
-  value: String;
+  value: number;
   date: String;
   type: number;
 }

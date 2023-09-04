@@ -46,10 +46,40 @@ const Home = () => {
     setOpenModal(false);
   };
 
+  const formateValueToString = (value: number) => {
+    return value.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+  };
+
+  const handleBalance = () => {
+    let sumBalance = 0;
+    if (movementsList) {
+      for (const item of movementsList) {
+        if (item.type === 1) {
+          sumBalance += item.value;
+        } else {
+          sumBalance -= item.value;
+        }
+      }
+    }
+    return formateValueToString(sumBalance);
+  };
+
+  const handleExpenses = () => {
+    let sumExpenses = 0;
+    if (movementsList) {
+      for (const item of movementsList) {
+        if (item.type === 0) {
+          sumExpenses += item.value;
+        }
+      }
+    }
+    return formateValueToString(sumExpenses);
+  };
+
   return (
     <S.Container>
       <Header name="Adriano Pessoa" />
-      <Balance saldo="9.250,90" gastos="-527,00" />
+      <Balance saldo={handleBalance()} gastos={handleExpenses()} />
       {/* <Actions /> */}
       <Modal
         openModal={openModal}
@@ -75,9 +105,13 @@ const Home = () => {
             <S.Content>
               <S.TextLabel>{item.label}</S.TextLabel>
               {item.type === 0 ? (
-                <S.TextExpenses>R$ -{item.value}</S.TextExpenses>
+                <S.TextExpenses>
+                  R$ -{formateValueToString(item.value)}
+                </S.TextExpenses>
               ) : (
-                <S.TextValue>R$ {item.value}</S.TextValue>
+                <S.TextAppetizer>
+                  R$ {formateValueToString(item.value)}
+                </S.TextAppetizer>
               )}
             </S.Content>
           </S.Movements>
