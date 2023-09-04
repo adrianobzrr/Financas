@@ -22,7 +22,9 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    DataResolver.storeData('@listaDados', movementsList);
+    if (movementsList) {
+      DataResolver.storeData('@listaDados', movementsList);
+    }
   }, [movementsList]);
 
   const handleInsertMovements = (data: HomePros) => {
