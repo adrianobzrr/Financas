@@ -1,6 +1,6 @@
 interface BalanceProps {
-  saldo: string;
-  gastos: string;
+  saldo: number;
+  gastos: number;
 }
 
 export default BalanceProps;

@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Feather from 'react-native-vector-icons/Feather';
 
 export const Modal = styled.Modal``;
 
@@ -22,9 +22,8 @@ export const ActionButton = styled.TouchableOpacity`
   margin-right: 15%;
 `;
 
-export const Icon = styled(MaterialCommunityIcons)`
+export const Icon = styled(Feather)`
   align-items: center;
-  color: #fff;
 `;
 
 export const Title = styled.Text`
@@ -64,4 +63,20 @@ export const SubmitButton = styled.TouchableOpacity`
 export const TextButton = styled.Text`
   font-size: 14px;
   color: #fff;
+`;
+
+export const TouchableTextContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+`;
+
+export const TexTypeMovements = styled.Text`
+  font-size: 14px;
+  color: #747474;
+`;
+
+export const SelectMovements = styled.TouchableOpacity`
+  background-color: #cecccc;
 `;

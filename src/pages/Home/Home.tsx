@@ -61,7 +61,7 @@ const Home = () => {
         }
       }
     }
-    return formateValueToString(sumBalance);
+    return sumBalance;
   };
 
   const handleExpenses = () => {
@@ -73,14 +73,13 @@ const Home = () => {
         }
       }
     }
-    return formateValueToString(sumExpenses);
+    return sumExpenses;
   };
 
   return (
     <S.Container>
       <Header name="Adriano Pessoa" />
       <Balance saldo={handleBalance()} gastos={handleExpenses()} />
-      {/* <Actions /> */}
       <Modal
         openModal={openModal}
         desableModal={desableModal}
@@ -88,8 +87,8 @@ const Home = () => {
       />
       <S.TitleLastMoviments>Últimas movimentações</S.TitleLastMoviments>
       <S.ListMoviments
-        data={movementsList}
-        keyExtractor={item => String(item.id)}
+        data={movementsList as HomePros[]}
+        keyExtractor={item => item.id}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         renderItem={({item}) => (

@@ -11,6 +11,18 @@ const Modal = ({
   const [desciption, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [value, setValue] = useState('');
+  const [buttonAppetizer, setButtonAppetizer] = useState(false);
+  const [buttonExpenses, setButtonExpenses] = useState(false);
+
+  const selectButtonAppertizer = () => {
+    setButtonAppetizer(true);
+    setButtonExpenses(false);
+  };
+
+  const selectButtonExpenses = () => {
+    setButtonExpenses(true);
+    setButtonAppetizer(false);
+  };
 
   const formateValueToNumber = (value: String) => {
     return parseFloat(value.replace(',', '.'));
@@ -22,7 +34,7 @@ const Modal = ({
       label: desciption,
       value: formateValueToNumber(value),
       date: date,
-      type: 0,
+      type: buttonExpenses ? 0 : 1,
     };
     handleInsertMovements(data);
     desableModal();
@@ -33,6 +45,8 @@ const Modal = ({
     setDescription('');
     setDate('');
     setValue('');
+    setButtonAppetizer(false);
+    setButtonExpenses(false);
   };
 
   const handleDate = (date: string) => {
@@ -49,7 +63,7 @@ const Modal = ({
               desableModal();
               clearInputs();
             }}>
-            <S.Icon name="keyboard-backspace" size={26} />
+            <S.Icon name="arrow-left" size={26} color={'#fff'} />
           </S.ActionButton>
           <S.Title>Nova Movimentação</S.Title>
         </S.Header>
@@ -76,6 +90,30 @@ const Modal = ({
             value={value}
             onChangeText={value => setValue(value)}
           />
+          <S.TouchableTextContainer>
+            <S.TexTypeMovements>Entrada</S.TexTypeMovements>
+            <S.SelectMovements
+              activeOpacity={0.8}
+              onPress={selectButtonAppertizer}>
+              <S.Icon
+                name="check"
+                size={22}
+                color={buttonAppetizer ? '#2ecc71' : '#eeee'}
+              />
+            </S.SelectMovements>
+          </S.TouchableTextContainer>
+          <S.TouchableTextContainer>
+            <S.TexTypeMovements>Saida</S.TexTypeMovements>
+            <S.SelectMovements
+              activeOpacity={0.8}
+              onPress={selectButtonExpenses}>
+              <S.Icon
+                name="check"
+                size={22}
+                color={buttonExpenses ? '#2ecc71' : '#eeee'}
+              />
+            </S.SelectMovements>
+          </S.TouchableTextContainer>
         </S.Content>
         <S.SubmitButton activeOpacity={0.8} onPress={handleSubmit}>
           <S.TextButton>Enviar</S.TextButton>

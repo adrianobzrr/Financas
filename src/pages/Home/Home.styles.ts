@@ -27,9 +27,16 @@ export const Content = styled.View`
   justify-content: space-between;
   margin-top: 2px;
   margin-bottom: 8px;
+  padding-left: 6px;
+  padding-right: 6px;
 `;
 
-export const Movements = styled.View``;
+export const Movements = styled.View`
+  background-color: #fff;
+  margin-top: 6px;
+  border-radius: 4px;
+  z-index: 99;
+`;
 
 export const TextDate = styled.Text`
   color: #dadada;
@@ -55,7 +62,7 @@ export const TextExpenses = styled.Text`
 `;
 
 export const Icon = styled(FontAwesome5)`
-  color: #e74c3c;
+  color: #dadada;
 `;
 
 export const touchableDelete = styled.TouchableOpacity``;
